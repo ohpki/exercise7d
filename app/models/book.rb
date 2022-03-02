@@ -25,4 +25,19 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
+
+
+  def self.sort(selection)
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    when 'likes'
+      return all.order(rate: :DESC)
+    when 'dislikes'
+      return all.order(rate: :ASC)
+    end
+  end
+
 end

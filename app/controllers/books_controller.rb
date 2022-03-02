@@ -13,7 +13,7 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book = Book.new
-
+    
   end
 
   def create
@@ -53,9 +53,17 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def search
+    selection = params[:keyword]
+    @books = Book.sort(selection)
+    @book = Book.new
+    render :index
+
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :rate)
   end
 end
