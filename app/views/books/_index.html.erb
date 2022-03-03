@@ -29,6 +29,11 @@
         </td>
         <td><%= link_to book.title,book, class: "book_#{book.id}" %></td>
         <td><%= book.body %></td>
+        <%=link_to search_tag_path(tag_id: book.id) do %>
+        <td><%= book.tags.map(&:name).join(', ') %><%=link_to book.tags.map(&:name).join(', '),search_tag_path(book.tags.name) %></td><% end %>
+
+
+
 
 
            <td class="favorite-btn">
@@ -36,10 +41,15 @@
 
 
             <td><%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %></td>
+    <% end %>
+
+
+
+
             <td><%= render "books/static_rate", book: book %></td><%= book.rate %>
 
 
-    <% end %>
+
 
 
     collection:

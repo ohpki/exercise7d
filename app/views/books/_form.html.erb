@@ -8,6 +8,17 @@
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
 
+    <div class="field">
+    <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
+    <%= f.text_field :name, placeholder:",で区切ってください" %>
+  </div>
+
+　<div class="actions" style="margin:20px 0;">
+    <%= f.submit "投稿",class:"btn btn-outline-primary btn-block" %>
+  </div>
+
+
+
 <% if book.id === nil %>
     <div class="form-group" id="star">
       <%= f.label :rate %>

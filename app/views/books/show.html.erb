@@ -4,7 +4,8 @@
       <h2>User info</h2>
       <%= render 'users/info', user: @user %>
       <h2 class="mt-3">New book</h2>
-      <%= render 'form', book: Book.new %>
+      <%= render 'form', book: Book.new, tag_list: @tag_list %>
+
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
@@ -17,7 +18,8 @@
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
-
+          
+          <td><%= @book.tags.map(&:name).join(', ') %></td>
           <td>
             <% if @book.favorited_by?(current_user) %>
             <p>
@@ -44,6 +46,7 @@
             <% end %>
 
         <td><p>コメント件数：<%= @book.book_comments.count %></p></td>
+
         </tr>
       </table>
 
@@ -59,7 +62,12 @@
                       <%= book_comment.user.name %>
                     <% end %>
                   </p>
+
                 <% end %>
+
+
+
+
 
 
 
@@ -69,10 +77,10 @@
                   <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %><br>
                   <%= f.submit "送信する" %>
                 <% end %>
-                
-                
-                
-                
+
+
+
+
 
 
               </div>

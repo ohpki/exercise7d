@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
   get 'book/search' => 'books#search'
   get "search" => "searches#search"
-
+  get "search_tag"=>"books#search_tag"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
