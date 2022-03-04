@@ -20,9 +20,9 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    tag_list = params[:book][:name].split(',')
+    tag_list = params[:book][:name].delete(' ').delete('　').split(',')
     if @book.save
-      @book.save_tag(tag_list)
+    @book.save_tags(tag_list)
       redirect_to book_path(@book.id), notice: "You have created book successfully."
     else
       @books = Book.all
@@ -35,6 +35,7 @@ class BooksController < ApplicationController
   def edit
     @book = Book.find(params[:id])
     @user = @book.user
+    @tag_list = @post.tags.pluck(:tag_name).join(',')
     if @user == current_user
       render :edit
     else
@@ -67,7 +68,7 @@ class BooksController < ApplicationController
   def search_tag
     #検索結果画面でもタグ一覧表示
     @tag_list=Tag.all
-    @tag=Tag.find(params[:tag.id])
+    @tag=Tag.find(params[:tag_id])
     @books=@tag.books.page(params[:page]).per(10)
     render :index
   end
@@ -77,6 +78,8 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :rate,)
+    params.require(:book).permit(:title, :body, :rate)
   end
+
+
 end
