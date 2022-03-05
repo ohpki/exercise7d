@@ -1,24 +1,32 @@
-# README
+# Bookers
+You can share the books you read and other people's favorite books.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# DEME
+You are free to write and post your thoughts on books you like or don't like.
+You can also see the ratings of books read by others, so this app is very useful when you are looking for the next book to read.
 
-Things you may want to cover:
+# Requirement
 
-* Ruby version
+* Python 3.6.5
+* pyxel 1.0.2
+*
 
-* System dependencies
+# Installation
 
-* Configuration
+# Usage
 
-* Database creation
+# Note
 
-* Database initialization
+注意点などがあれば書く
 
-* How to run the test suite
+# Author
 
-* Services (job queues, cache servers, search engines, etc.)
+作成情報を列挙する
 
-* Deployment instructions
+* 作成者
+* 所属
+* E-mail
 
-* ...
+# License
+ライセンスを明示する
+
